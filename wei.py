@@ -5,9 +5,8 @@ class Weibo(object):
     params = {}
     headers = {}
     
-    def __init__(self,access_token='',uid=''):
+    def __init__(self,access_token=''):
         self.access_token  = access_token
-        self.uid = uid
         
     def _request(self,**kw):
 #        if 'headers' in kw:
@@ -22,9 +21,11 @@ class Weibo(object):
 #                del kw[keyword]
 #            except KeyError:
 #                continue
-                
+        if 'uid' in kw:
+            self.uid = kw['uid'] 
+        if 'screen_name' in kw:
+            self.screen_name = kw['screen_name']               
         self.params.update(access_token=self.access_token)
-        self.params.update(uid=self.uid)
         self.params.update(kw)
         self.url = ''.join([self.base_url,self.urlpath])
     
@@ -47,7 +48,7 @@ class Weibo(object):
         
         return x
     
-for i in range(x,y):
-    d = Weibo(access_token='2.0049mjxBCIwWIC4b97cb1107NWndaB',uid=str(i))
-    print 'uid:%s'%(str(i))
-    print d.show()    
+#for i in range(x,y):
+#    d = Weibo(access_token='2.0049mjxBCIwWIC4b97cb1107NWndaB',uid=str(i))
+#    print 'uid:%s'%(str(i))
+#    print d.show()    
