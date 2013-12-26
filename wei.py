@@ -47,7 +47,7 @@ class Weibo(object):
         
         return x
     
-for i in range(1798847687,1798847700):
+for i in range(x,y):
     d = Weibo(access_token='2.0049mjxBCIwWIC4b97cb1107NWndaB',uid=str(i))
     print 'uid:%s'%(str(i))
     print d.show()    
